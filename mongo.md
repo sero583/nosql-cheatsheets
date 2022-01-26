@@ -55,7 +55,7 @@ db.dropDatabase();
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 { "ok": 1 }
@@ -70,7 +70,7 @@ db.createCollection("posts");
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 { "ok": 1 }
@@ -144,7 +144,7 @@ db.posts.insertMany([
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 {
@@ -166,7 +166,7 @@ db.posts.find();
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 {
@@ -216,7 +216,7 @@ db.posts.find().pretty();
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 {
@@ -266,7 +266,7 @@ db.posts.find({ category: "News" });
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 {
@@ -416,7 +416,7 @@ db.posts.find().limit(2).pretty();
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 {
@@ -452,7 +452,7 @@ db.posts.find().limit(2).sort({ title: 1 }).pretty();
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 {
@@ -509,7 +509,7 @@ db.posts.findOne({ category: "News" });
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 {
@@ -544,7 +544,7 @@ db.posts.find(
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 { "_id" : ObjectId("61f181ff079ff92d683f39cb"), "title" : "Post One" }
@@ -707,7 +707,7 @@ db.posts.find({
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 {
@@ -748,7 +748,7 @@ db.posts.createIndex({ title: "text" });
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 {
@@ -772,7 +772,7 @@ db.posts.find({
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Ackchyuall Result</summary>
 
 ```json
 {

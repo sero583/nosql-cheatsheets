@@ -238,7 +238,8 @@ db.posts.find({ category: "News" });
 <summary>Result</summary>
 
 ```javascript
-
+{ "_id" : ObjectId("61f181ff079ff92d683f39cb"), "title" : "Post One", "body" : "Body of post one", "category" : "News", "tags" : [ "news", "events" ], "user" : { "name" : "John Doe", "status" : "author" }, "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)" }
+{ "_id" : ObjectId("61f1820e079ff92d683f39cd"), "title" : "Post Three", "body" : "Body of post three", "category" : "News", "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)" }
 ```
 
 </details>
@@ -253,10 +254,89 @@ db.posts.find().sort({ title: -1 }).pretty()
 ```
 
 <details>
-<summary>Result</summary>
+<summary>Result 1</summary>
 
 ```javascript
+{
+        "_id" : ObjectId("61f1820e079ff92d683f39ce"),
+        "title" : "Post Four",
+        "body" : "Body of post three",
+        "category" : "Entertainment",
+        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+}
+{
+        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+        "title" : "Post One",
+        "body" : "Body of post one",
+        "category" : "News",
+        "tags" : [
+                "news",
+                "events"
+        ],
+        "user" : {
+                "name" : "John Doe",
+                "status" : "author"
+        },
+        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+}
+{
+        "_id" : ObjectId("61f1820e079ff92d683f39cd"),
+        "title" : "Post Three",
+        "body" : "Body of post three",
+        "category" : "News",
+        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+}
+{
+        "_id" : ObjectId("61f1820e079ff92d683f39cc"),
+        "title" : "Post Two",
+        "body" : "Body of post two",
+        "category" : "Technology",
+        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+}
+```
 
+</details>
+
+<details>
+<summary>Result -1</summary>
+
+```javascript
+{
+        "_id" : ObjectId("61f1820e079ff92d683f39cc"),
+        "title" : "Post Two",
+        "body" : "Body of post two",
+        "category" : "Technology",
+        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+}
+{
+        "_id" : ObjectId("61f1820e079ff92d683f39cd"),
+        "title" : "Post Three",
+        "body" : "Body of post three",
+        "category" : "News",
+        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+}
+{
+        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+        "title" : "Post One",
+        "body" : "Body of post one",
+        "category" : "News",
+        "tags" : [
+                "news",
+                "events"
+        ],
+        "user" : {
+                "name" : "John Doe",
+                "status" : "author"
+        },
+        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+}
+{
+        "_id" : ObjectId("61f1820e079ff92d683f39ce"),
+        "title" : "Post Four",
+        "body" : "Body of post three",
+        "category" : "Entertainment",
+        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+}
 ```
 
 </details>
@@ -265,14 +345,15 @@ db.posts.find().sort({ title: -1 }).pretty()
 
 ```javascript
 db.posts.find().count();
-db.posts.find({ category: "news" }).count();
+db.posts.find({ category: "news" }).count(); // kleines n
 ```
 
 <details>
 <summary>Result</summary>
 
 ```javascript
-
+4;
+0;
 ```
 
 </details>
@@ -287,7 +368,28 @@ db.posts.find().limit(2).pretty();
 <summary>Result</summary>
 
 ```javascript
-
+{
+        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+        "title" : "Post One",
+        "body" : "Body of post one",
+        "category" : "News",
+        "tags" : [
+                "news",
+                "events"
+        ],
+        "user" : {
+                "name" : "John Doe",
+                "status" : "author"
+        },
+        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+}
+{
+        "_id" : ObjectId("61f1820e079ff92d683f39cc"),
+        "title" : "Post Two",
+        "body" : "Body of post two",
+        "category" : "Technology",
+        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+}
 ```
 
 </details>
@@ -302,7 +404,28 @@ db.posts.find().limit(2).sort({ title: 1 }).pretty();
 <summary>Result</summary>
 
 ```javascript
-
+{
+        "_id" : ObjectId("61f1820e079ff92d683f39ce"),
+        "title" : "Post Four",
+        "body" : "Body of post three",
+        "category" : "Entertainment",
+        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+}
+{
+        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+        "title" : "Post One",
+        "body" : "Body of post one",
+        "category" : "News",
+        "tags" : [
+                "news",
+                "events"
+        ],
+        "user" : {
+                "name" : "John Doe",
+                "status" : "author"
+        },
+        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+}
 ```
 
 </details>
@@ -313,13 +436,17 @@ db.posts.find().limit(2).sort({ title: 1 }).pretty();
 db.posts.find().forEach(function (doc) {
   print("Blog Post: " + doc.title);
 });
+db.posts.find().forEach((doc) => print(`Blog Post: ${doc.title}`));
 ```
 
 <details>
 <summary>Result</summary>
 
 ```javascript
-
+Blog Post: Post One
+Blog Post: Post Two
+Blog Post: Post Three
+Blog Post: Post Four
 ```
 
 </details>
@@ -334,7 +461,21 @@ db.posts.findOne({ category: "News" });
 <summary>Result</summary>
 
 ```javascript
-
+{
+        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+        "title" : "Post One",
+        "body" : "Body of post one",
+        "category" : "News",
+        "tags" : [
+                "news",
+                "events"
+        ],
+        "user" : {
+                "name" : "John Doe",
+                "status" : "author"
+        },
+        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+}
 ```
 
 </details>
@@ -355,7 +496,8 @@ db.posts.find(
 <summary>Result</summary>
 
 ```javascript
-
+{ "_id" : ObjectId("61f181ff079ff92d683f39cb"), "title" : "Post One" }
+// hint: author gets ignored due to its {"user" : { "name" : "John Doe", "status" : "author" }}
 ```
 
 </details>
@@ -374,13 +516,14 @@ db.posts.update(
     upsert: true,
   }
 );
+// {upsert: true} = no insert on unknown documents
 ```
 
 <details>
 <summary>Result</summary>
 
 ```javascript
-
+WriteResult({ nMatched: 1, nUpserted: 0, nModified: 1 });
 ```
 
 </details>
@@ -403,7 +546,7 @@ db.posts.update(
 <summary>Result</summary>
 
 ```javascript
-
+WriteResult({ nMatched: 1, nUpserted: 0, nModified: 1 });
 ```
 
 </details>
@@ -425,7 +568,7 @@ db.posts.update(
 <summary>Result</summary>
 
 ```javascript
-
+WriteResult({ nMatched: 1, nUpserted: 0, nModified: 1 });
 ```
 
 </details>
@@ -447,7 +590,7 @@ db.posts.update(
 <summary>Result</summary>
 
 ```javascript
-
+WriteResult({ nMatched: 1, nUpserted: 0, nModified: 1 });
 ```
 
 </details>
@@ -462,7 +605,7 @@ db.posts.remove({ title: "Post Four" });
 <summary>Result</summary>
 
 ```javascript
-
+WriteResult({ nRemoved: 1 });
 ```
 
 </details>
@@ -495,7 +638,7 @@ db.posts.update(
 <summary>Result</summary>
 
 ```javascript
-
+WriteResult({ nMatched: 1, nUpserted: 0, nModified: 1 });
 ```
 
 </details>
@@ -516,7 +659,7 @@ db.posts.find({
 <summary>Result</summary>
 
 ```javascript
-
+{ "_id" : ObjectId("61f181ff079ff92d683f39cb"), "title" : "Post One", "body" : "Body of post one", "category" : "News", "tags" : [ "news", "events" ], "user" : { "name" : "John Doe", "status" : "author" }, "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)", "comments" : [ { "body" : "Comment One", "user" : "Mary Williams", "date" : "Wed Jan 26 2022 18:25:36 GMT+0100 (CET)" }, { "body" : "Comment Two", "user" : "Harry White", "date" : "Wed Jan 26 2022 18:25:36 GMT+0100 (CET)" } ] }
 ```
 
 </details>
@@ -531,7 +674,12 @@ db.posts.createIndex({ title: "text" });
 <summary>Result</summary>
 
 ```javascript
-
+{
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "createdCollectionAutomatically" : false,
+        "ok" : 1
+}
 ```
 
 </details>
@@ -550,7 +698,7 @@ db.posts.find({
 <summary>Result</summary>
 
 ```javascript
-
+{ "_id" : ObjectId("61f181ff079ff92d683f39cb"), "title" : "Post One", "body" : "Body of post one", "category" : "News", "tags" : [ "news", "events" ], "user" : { "name" : "John Doe", "status" : "author" }, "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)", "comments" : [ { "body" : "Comment One", "user" : "Mary Williams", "date" : "Wed Jan 26 2022 18:25:36 GMT+0100 (CET)" }, { "body" : "Comment Two", "user" : "Harry White", "date" : "Wed Jan 26 2022 18:25:36 GMT+0100 (CET)" } ] }
 ```
 
 </details>
@@ -569,6 +717,9 @@ db.posts.find({ views: { $lte: 7 } });
 
 ```javascript
 
+
+{ "_id" : ObjectId("61f1820e079ff92d683f39cc"), "title" : "Post Two", "body" : "Body for post 2", "date" : "Wed Jan 26 2022 18:24:06 GMT+0100 (CET)", "category" : "Technology", "views" : 5 }
+{ "_id" : ObjectId("61f1820e079ff92d683f39cc"), "title" : "Post Two", "body" : "Body for post 2", "date" : "Wed Jan 26 2022 18:24:06 GMT+0100 (CET)", "category" : "Technology", "views" : 5 }
 ```
 
 </details>

@@ -9,7 +9,7 @@ show dbs
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 admin   0.000GB
 config  0.000GB
 local   0.000GB
@@ -27,7 +27,7 @@ db;
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 test;
 ```
 
@@ -42,7 +42,7 @@ use acme
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 switched to db acme
 ```
 
@@ -57,8 +57,8 @@ db.dropDatabase();
 <details>
 <summary>Result</summary>
 
-```javascript
-{ "ok" : 1 }
+```json
+{ "ok": 1 }
 ```
 
 </details>
@@ -72,8 +72,8 @@ db.createCollection("posts");
 <details>
 <summary>Result</summary>
 
-```javascript
-{ "ok" : 1 }
+```json
+{ "ok": 1 }
 ```
 
 </details>
@@ -87,7 +87,7 @@ show collections
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 posts;
 ```
 
@@ -112,7 +112,7 @@ db.posts.insert({
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 WriteResult({ nInserted: 1 });
 ```
 
@@ -146,7 +146,7 @@ db.posts.insertMany([
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 {
     "acknowledged" : true,
     "insertedIds" : [
@@ -168,7 +168,7 @@ db.posts.find();
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 {
     "_id" : ObjectId("61f185ba079ff92d683f39cf"),
     "title" : "Post One",
@@ -218,7 +218,7 @@ db.posts.find().pretty();
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 {
     "_id" : ObjectId("61f181ff079ff92d683f39cb"),
     "title" : "Post One",
@@ -268,7 +268,7 @@ db.posts.find({ category: "News" });
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 {
     "_id" : ObjectId("61f185ba079ff92d683f39cf"),
     "title" : "Post One",
@@ -307,7 +307,7 @@ db.posts.find().sort({ title: -1 }).pretty()
 <details>
 <summary>Result 1</summary>
 
-```javascript
+```json
 {
     "_id" : ObjectId("61f1820e079ff92d683f39ce"),
     "title" : "Post Four",
@@ -351,7 +351,7 @@ db.posts.find().sort({ title: -1 }).pretty()
 <details>
 <summary>Result -1</summary>
 
-```javascript
+```json
 {
     "_id" : ObjectId("61f1820e079ff92d683f39cc"),
     "title" : "Post Two",
@@ -402,7 +402,7 @@ db.posts.find({ category: "news" }).count(); // kleines n
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 4;
 0;
 ```
@@ -418,7 +418,7 @@ db.posts.find().limit(2).pretty();
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 {
     "_id" : ObjectId("61f181ff079ff92d683f39cb"),
     "title" : "Post One",
@@ -454,7 +454,7 @@ db.posts.find().limit(2).sort({ title: 1 }).pretty();
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 {
     "_id" : ObjectId("61f1820e079ff92d683f39ce"),
     "title" : "Post Four",
@@ -493,7 +493,7 @@ db.posts.find().forEach((doc) => print(`Blog Post: ${doc.title}`));
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 Blog Post: Post One
 Blog Post: Post Two
 Blog Post: Post Three
@@ -511,7 +511,7 @@ db.posts.findOne({ category: "News" });
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 {
     "_id" : ObjectId("61f181ff079ff92d683f39cb"),
     "title" : "Post One",
@@ -546,7 +546,7 @@ db.posts.find(
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 { "_id" : ObjectId("61f181ff079ff92d683f39cb"), "title" : "Post One" }
 // hint: author gets ignored due to its {"user" : { "name" : "John Doe", "status" : "author" }}
 ```
@@ -573,7 +573,7 @@ db.posts.update(
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 WriteResult({ nMatched: 1, nUpserted: 0, nModified: 1 });
 ```
 
@@ -596,7 +596,7 @@ db.posts.update(
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 WriteResult({ nMatched: 1, nUpserted: 0, nModified: 1 });
 ```
 
@@ -618,7 +618,7 @@ db.posts.update(
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 WriteResult({ nMatched: 1, nUpserted: 0, nModified: 1 });
 ```
 
@@ -640,7 +640,7 @@ db.posts.update(
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 WriteResult({ nMatched: 1, nUpserted: 0, nModified: 1 });
 ```
 
@@ -655,7 +655,7 @@ db.posts.remove({ title: "Post Four" });
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 WriteResult({ nRemoved: 1 });
 ```
 
@@ -688,7 +688,7 @@ db.posts.update(
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 WriteResult({ nMatched: 1, nUpserted: 0, nModified: 1 });
 ```
 
@@ -709,7 +709,7 @@ db.posts.find({
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 {
     "_id" : ObjectId("61f185ba079ff92d683f39cf"),
     "title" : "Post One",
@@ -750,12 +750,12 @@ db.posts.createIndex({ title: "text" });
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 {
-    "numIndexesBefore" : 1,
-    "numIndexesAfter" : 2,
-    "createdCollectionAutomatically" : false,
-    "ok" : 1
+  "numIndexesBefore": 1,
+  "numIndexesAfter": 2,
+  "createdCollectionAutomatically": false,
+  "ok": 1
 }
 ```
 
@@ -774,7 +774,7 @@ db.posts.find({
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 {
     "_id" : ObjectId("61f185ba079ff92d683f39cf"),
     "title" : "Post One",
@@ -818,7 +818,7 @@ db.posts.find({ views: { $lte: 7 } });
 <details>
 <summary>Result</summary>
 
-```javascript
+```json
 
 
 {

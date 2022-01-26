@@ -13,7 +13,6 @@ show dbs
 admin   0.000GB
 config  0.000GB
 local   0.000GB
-phone   0.000GB
 test    0.000GB
 ```
 
@@ -149,12 +148,12 @@ db.posts.insertMany([
 
 ```javascript
 {
-        "acknowledged" : true,
-        "insertedIds" : [
-                ObjectId("61f1820e079ff92d683f39cc"),
-                ObjectId("61f1820e079ff92d683f39cd"),
-                ObjectId("61f1820e079ff92d683f39ce")
-        ]
+    "acknowledged" : true,
+    "insertedIds" : [
+    ObjectId("61f1820e079ff92d683f39cc"),
+    ObjectId("61f1820e079ff92d683f39cd"),
+    ObjectId("61f1820e079ff92d683f39ce")
+    ]
 }
 ```
 
@@ -170,10 +169,42 @@ db.posts.find();
 <summary>Result</summary>
 
 ```javascript
-{ "_id" : ObjectId("61f181ff079ff92d683f39cb"), "title" : "Post One", "body" : "Body of post one", "category" : "News", "tags" : [ "news", "events" ], "user" : { "name" : "John Doe", "status" : "author" }, "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)" }
-{ "_id" : ObjectId("61f1820e079ff92d683f39cc"), "title" : "Post Two", "body" : "Body of post two", "category" : "Technology", "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)" }
-{ "_id" : ObjectId("61f1820e079ff92d683f39cd"), "title" : "Post Three", "body" : "Body of post three", "category" : "News", "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)" }
-{ "_id" : ObjectId("61f1820e079ff92d683f39ce"), "title" : "Post Four", "body" : "Body of post three", "category" : "Entertainment", "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)" }
+{
+    "_id" : ObjectId("61f185ba079ff92d683f39cf"),
+    "title" : "Post One",
+    "body" : "Body of post one",
+    "category" : "News",
+    "tags" : [
+        "news",
+        "events"
+    ],
+    "user" : {
+        "name" : "John Doe",
+        "status" : "author"
+    },
+    "date" : "Wed Jan 26 2022 18:32:42 GMT+0100 (CET)"
+}
+{
+    "_id" : ObjectId("61f185c0079ff92d683f39d0"),
+    "title" : "Post Two",
+    "body" : "Body of post two",
+    "category" : "Technology",
+    "date" : "Wed Jan 26 2022 18:32:48 GMT+0100 (CET)"
+}
+{
+    "_id" : ObjectId("61f185c0079ff92d683f39d1"),
+    "title" : "Post Three",
+    "body" : "Body of post three",
+    "category" : "News",
+    "date" : "Wed Jan 26 2022 18:32:48 GMT+0100 (CET)"
+}
+{
+    "_id" : ObjectId("61f185c0079ff92d683f39d2"),
+    "title" : "Post Four",
+    "body" : "Body of post three",
+    "category" : "Entertainment",
+    "date" : "Wed Jan 26 2022 18:32:48 GMT+0100 (CET)"
+}
 ```
 
 </details>
@@ -189,40 +220,40 @@ db.posts.find().pretty();
 
 ```javascript
 {
-        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
-        "title" : "Post One",
-        "body" : "Body of post one",
-        "category" : "News",
-        "tags" : [
-                "news",
-                "events"
-        ],
-        "user" : {
-                "name" : "John Doe",
-                "status" : "author"
-        },
-        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+    "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+    "title" : "Post One",
+    "body" : "Body of post one",
+    "category" : "News",
+    "tags" : [
+    "news",
+    "events"
+    ],
+    "user" : {
+    "name" : "John Doe",
+    "status" : "author"
+    },
+    "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39cc"),
-        "title" : "Post Two",
-        "body" : "Body of post two",
-        "category" : "Technology",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39cc"),
+    "title" : "Post Two",
+    "body" : "Body of post two",
+    "category" : "Technology",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39cd"),
-        "title" : "Post Three",
-        "body" : "Body of post three",
-        "category" : "News",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39cd"),
+    "title" : "Post Three",
+    "body" : "Body of post three",
+    "category" : "News",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39ce"),
-        "title" : "Post Four",
-        "body" : "Body of post three",
-        "category" : "Entertainment",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39ce"),
+    "title" : "Post Four",
+    "body" : "Body of post three",
+    "category" : "Entertainment",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 ```
 
@@ -238,8 +269,28 @@ db.posts.find({ category: "News" });
 <summary>Result</summary>
 
 ```javascript
-{ "_id" : ObjectId("61f181ff079ff92d683f39cb"), "title" : "Post One", "body" : "Body of post one", "category" : "News", "tags" : [ "news", "events" ], "user" : { "name" : "John Doe", "status" : "author" }, "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)" }
-{ "_id" : ObjectId("61f1820e079ff92d683f39cd"), "title" : "Post Three", "body" : "Body of post three", "category" : "News", "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)" }
+{
+    "_id" : ObjectId("61f185ba079ff92d683f39cf"),
+    "title" : "Post One",
+    "body" : "Body of post one",
+    "category" : "News",
+    "tags" : [
+        "news",
+        "events"
+    ],
+    "user" : {
+        "name" : "John Doe",
+        "status" : "author"
+    },
+    "date" : "Wed Jan 26 2022 18:32:42 GMT+0100 (CET)"
+}
+{
+    "_id" : ObjectId("61f185c0079ff92d683f39d1"),
+    "title" : "Post Three",
+    "body" : "Body of post three",
+    "category" : "News",
+    "date" : "Wed Jan 26 2022 18:32:48 GMT+0100 (CET)"
+}
 ```
 
 </details>
@@ -258,40 +309,40 @@ db.posts.find().sort({ title: -1 }).pretty()
 
 ```javascript
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39ce"),
-        "title" : "Post Four",
-        "body" : "Body of post three",
-        "category" : "Entertainment",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39ce"),
+    "title" : "Post Four",
+    "body" : "Body of post three",
+    "category" : "Entertainment",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
-        "title" : "Post One",
-        "body" : "Body of post one",
-        "category" : "News",
-        "tags" : [
-                "news",
-                "events"
-        ],
-        "user" : {
-                "name" : "John Doe",
-                "status" : "author"
-        },
-        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+    "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+    "title" : "Post One",
+    "body" : "Body of post one",
+    "category" : "News",
+    "tags" : [
+    "news",
+    "events"
+    ],
+    "user" : {
+    "name" : "John Doe",
+    "status" : "author"
+    },
+    "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39cd"),
-        "title" : "Post Three",
-        "body" : "Body of post three",
-        "category" : "News",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39cd"),
+    "title" : "Post Three",
+    "body" : "Body of post three",
+    "category" : "News",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39cc"),
-        "title" : "Post Two",
-        "body" : "Body of post two",
-        "category" : "Technology",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39cc"),
+    "title" : "Post Two",
+    "body" : "Body of post two",
+    "category" : "Technology",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 ```
 
@@ -302,40 +353,40 @@ db.posts.find().sort({ title: -1 }).pretty()
 
 ```javascript
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39cc"),
-        "title" : "Post Two",
-        "body" : "Body of post two",
-        "category" : "Technology",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39cc"),
+    "title" : "Post Two",
+    "body" : "Body of post two",
+    "category" : "Technology",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39cd"),
-        "title" : "Post Three",
-        "body" : "Body of post three",
-        "category" : "News",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39cd"),
+    "title" : "Post Three",
+    "body" : "Body of post three",
+    "category" : "News",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
-        "title" : "Post One",
-        "body" : "Body of post one",
-        "category" : "News",
-        "tags" : [
-                "news",
-                "events"
-        ],
-        "user" : {
-                "name" : "John Doe",
-                "status" : "author"
-        },
-        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+    "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+    "title" : "Post One",
+    "body" : "Body of post one",
+    "category" : "News",
+    "tags" : [
+    "news",
+    "events"
+    ],
+    "user" : {
+    "name" : "John Doe",
+    "status" : "author"
+    },
+    "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39ce"),
-        "title" : "Post Four",
-        "body" : "Body of post three",
-        "category" : "Entertainment",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39ce"),
+    "title" : "Post Four",
+    "body" : "Body of post three",
+    "category" : "Entertainment",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 ```
 
@@ -369,26 +420,26 @@ db.posts.find().limit(2).pretty();
 
 ```javascript
 {
-        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
-        "title" : "Post One",
-        "body" : "Body of post one",
-        "category" : "News",
-        "tags" : [
-                "news",
-                "events"
-        ],
-        "user" : {
-                "name" : "John Doe",
-                "status" : "author"
-        },
-        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+    "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+    "title" : "Post One",
+    "body" : "Body of post one",
+    "category" : "News",
+    "tags" : [
+    "news",
+    "events"
+    ],
+    "user" : {
+    "name" : "John Doe",
+    "status" : "author"
+    },
+    "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39cc"),
-        "title" : "Post Two",
-        "body" : "Body of post two",
-        "category" : "Technology",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39cc"),
+    "title" : "Post Two",
+    "body" : "Body of post two",
+    "category" : "Technology",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 ```
 
@@ -405,26 +456,26 @@ db.posts.find().limit(2).sort({ title: 1 }).pretty();
 
 ```javascript
 {
-        "_id" : ObjectId("61f1820e079ff92d683f39ce"),
-        "title" : "Post Four",
-        "body" : "Body of post three",
-        "category" : "Entertainment",
-        "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
+    "_id" : ObjectId("61f1820e079ff92d683f39ce"),
+    "title" : "Post Four",
+    "body" : "Body of post three",
+    "category" : "Entertainment",
+    "date" : "Wed Jan 26 2022 18:17:02 GMT+0100 (CET)"
 }
 {
-        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
-        "title" : "Post One",
-        "body" : "Body of post one",
-        "category" : "News",
-        "tags" : [
-                "news",
-                "events"
-        ],
-        "user" : {
-                "name" : "John Doe",
-                "status" : "author"
-        },
-        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+    "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+    "title" : "Post One",
+    "body" : "Body of post one",
+    "category" : "News",
+    "tags" : [
+    "news",
+    "events"
+    ],
+    "user" : {
+    "name" : "John Doe",
+    "status" : "author"
+    },
+    "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
 }
 ```
 
@@ -462,19 +513,19 @@ db.posts.findOne({ category: "News" });
 
 ```javascript
 {
-        "_id" : ObjectId("61f181ff079ff92d683f39cb"),
-        "title" : "Post One",
-        "body" : "Body of post one",
-        "category" : "News",
-        "tags" : [
-                "news",
-                "events"
-        ],
-        "user" : {
-                "name" : "John Doe",
-                "status" : "author"
-        },
-        "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
+    "_id" : ObjectId("61f181ff079ff92d683f39cb"),
+    "title" : "Post One",
+    "body" : "Body of post one",
+    "category" : "News",
+    "tags" : [
+    "news",
+    "events"
+    ],
+    "user" : {
+    "name" : "John Doe",
+    "status" : "author"
+    },
+    "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)"
 }
 ```
 
@@ -659,7 +710,33 @@ db.posts.find({
 <summary>Result</summary>
 
 ```javascript
-{ "_id" : ObjectId("61f181ff079ff92d683f39cb"), "title" : "Post One", "body" : "Body of post one", "category" : "News", "tags" : [ "news", "events" ], "user" : { "name" : "John Doe", "status" : "author" }, "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)", "comments" : [ { "body" : "Comment One", "user" : "Mary Williams", "date" : "Wed Jan 26 2022 18:25:36 GMT+0100 (CET)" }, { "body" : "Comment Two", "user" : "Harry White", "date" : "Wed Jan 26 2022 18:25:36 GMT+0100 (CET)" } ] }
+{
+    "_id" : ObjectId("61f185ba079ff92d683f39cf"),
+    "title" : "Post One",
+    "body" : "Body of post one",
+    "category" : "News",
+    "tags" : [
+        "news",
+        "events"
+    ],
+    "user" : {
+        "name" : "John Doe",
+        "status" : "author"
+    },
+    "date" : "Wed Jan 26 2022 18:32:42 GMT+0100 (CET)",
+    "comments" : [
+        {
+            "body" : "Comment One",
+            "user" : "Mary Williams",
+            "date" : "Wed Jan 26 2022 18:34:44 GMT+0100 (CET)"
+        },
+        {
+            "body" : "Comment Two",
+            "user" : "Harry White",
+            "date" : "Wed Jan 26 2022 18:34:44 GMT+0100 (CET)"
+        }
+    ]
+}
 ```
 
 </details>
@@ -675,10 +752,10 @@ db.posts.createIndex({ title: "text" });
 
 ```javascript
 {
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 2,
-        "createdCollectionAutomatically" : false,
-        "ok" : 1
+    "numIndexesBefore" : 1,
+    "numIndexesAfter" : 2,
+    "createdCollectionAutomatically" : false,
+    "ok" : 1
 }
 ```
 
@@ -698,7 +775,33 @@ db.posts.find({
 <summary>Result</summary>
 
 ```javascript
-{ "_id" : ObjectId("61f181ff079ff92d683f39cb"), "title" : "Post One", "body" : "Body of post one", "category" : "News", "tags" : [ "news", "events" ], "user" : { "name" : "John Doe", "status" : "author" }, "date" : "Wed Jan 26 2022 18:16:47 GMT+0100 (CET)", "comments" : [ { "body" : "Comment One", "user" : "Mary Williams", "date" : "Wed Jan 26 2022 18:25:36 GMT+0100 (CET)" }, { "body" : "Comment Two", "user" : "Harry White", "date" : "Wed Jan 26 2022 18:25:36 GMT+0100 (CET)" } ] }
+{
+    "_id" : ObjectId("61f185ba079ff92d683f39cf"),
+    "title" : "Post One",
+    "body" : "Body of post one",
+    "category" : "News",
+    "tags" : [
+        "news",
+        "events"
+    ],
+    "user" : {
+        "name" : "John Doe",
+        "status" : "author"
+    },
+    "date" : "Wed Jan 26 2022 18:32:42 GMT+0100 (CET)",
+    "comments" : [
+        {
+            "body" : "Comment One",
+            "user" : "Mary Williams",
+            "date" : "Wed Jan 26 2022 18:34:44 GMT+0100 (CET)"
+        },
+        {
+            "body" : "Comment Two",
+            "user" : "Harry White",
+            "date" : "Wed Jan 26 2022 18:34:44 GMT+0100 (CET)"
+        }
+    ]
+}
 ```
 
 </details>
@@ -718,8 +821,26 @@ db.posts.find({ views: { $lte: 7 } });
 ```javascript
 
 
-{ "_id" : ObjectId("61f1820e079ff92d683f39cc"), "title" : "Post Two", "body" : "Body for post 2", "date" : "Wed Jan 26 2022 18:24:06 GMT+0100 (CET)", "category" : "Technology", "views" : 5 }
-{ "_id" : ObjectId("61f1820e079ff92d683f39cc"), "title" : "Post Two", "body" : "Body for post 2", "date" : "Wed Jan 26 2022 18:24:06 GMT+0100 (CET)", "category" : "Technology", "views" : 5 }
+{
+    "_id" : ObjectId("61f185c0079ff92d683f39d0"),
+    "title" : "Post Two",
+    "body" : "Body for post 2",
+    "date" : "Wed Jan 26 2022 18:34:15 GMT+0100 (CET)",
+    "category" : "Technology",
+    "views" : 5
+}
+{
+    "_id" : ObjectId("61f185c0079ff92d683f39d0"),
+    "title" : "Post Two",
+    "body" : "Body for post 2",
+    "date" : "Wed Jan 26 2022 18:34:15 GMT+0100 (CET)",
+    "category" : "Technology",
+    "views" : 5
+}
 ```
 
 </details>
+
+## Thanks to
+
+[Brad Traversy](https://gist.github.com/bradtraversy/f407d642bdc3b31681bc7e56d95485b6) for giving the template!
